@@ -33,7 +33,6 @@ function main(file_name::String)::Int
     run_time::Number = 0
     while running
         button_values::Dict{String, Bool} = get_buttons(gui)
-        println(button_values)
         # Clear and reset values
         if button_values["Clear & Reset"]
             max_iters = json_file["algorithm"]["iterations"]
@@ -56,7 +55,6 @@ function main(file_name::String)::Int
         end
         # Set slider values to algorithm
         slider_values::Dict{String, Union{Int, Float64}} = get_sliders(gui)
-        println(slider_values)
         for (parameter, value) in slider_values
             if haskey(algorithm.params, parameter)
                 algorithm.params[parameter] = value
@@ -77,7 +75,6 @@ function main(file_name::String)::Int
         if running
             running = gui.screen.window_open[] == true
         end
-        println("Running: $(running), max_iters: $(max_iters)")
         # Reset "step" button
         set_button_value(gui, "Step")
         # Sleep

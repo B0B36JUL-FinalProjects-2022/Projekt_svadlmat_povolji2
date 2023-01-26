@@ -2,5 +2,5 @@ using Revise
 using TSP
 
 
-main("ga")
+main("sa")
 

@@ -205,7 +205,7 @@ end
 
 # ---------------------- Button functionality -----------------------
 
-function set_slider_default_values(default_sliders::Dict{String, Real}, slider_labels::Vector{String}, sliders::Vector{Makie.Slider})
+function set_slider_default_values(default_sliders::Dict{String, Any}, slider_labels::Vector{String}, sliders::Vector{Makie.Slider})
     for i in eachindex(slider_labels)
         set_close_to!(sliders[i + 1], default_sliders[slider_labels[i]])
     end
@@ -248,8 +248,8 @@ function update_gui(gui::GUI, data::Dict{String, Any})
     gui.graphics.lines = update_route(gui.graphics.axis, gui.graphics.lines, x_coords, y_coords)
 
     gui.graphics.info_label_values["Current iteration: "][] += 1
-    gui.graphics.info_label_values["Current shortest distance: "][] = data["distance"]
-    gui.graphics.info_label_values["Current best: "][] = data["best"]
+    gui.graphics.info_label_values["Current shortest distance: "][] = round(data["distance"], 3)
+    gui.graphics.info_label_values["Current best: "][] = round(data["best"], 3)
     
 
     if isnothing(gui.data.best_entry) || data["distance"] < gui.data.best_entry["distance"]
@@ -257,8 +257,8 @@ function update_gui(gui::GUI, data::Dict{String, Any})
 
         gui.graphics.best_lines = update_route(gui.graphics.best_axis, gui.graphics.best_lines, x_coords, y_coords)
 
-        gui.graphics.info_label_values["Best distance: "][] = data["distance"]
-        gui.graphics.info_label_values["Best: "][] = data["best"]
+        gui.graphics.info_label_values["Best distance: "][] = round(data["distance"], 3)
+        gui.graphics.info_label_values["Best: "][] = round(data["best"], 3)
     end
 end
 

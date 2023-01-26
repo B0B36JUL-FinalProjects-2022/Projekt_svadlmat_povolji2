@@ -7,7 +7,7 @@
   "algorithm": {
     "name": "SimulatedAnnealing",
     "seed": 25,
-    "iterations": 100,
+    "iterations": 10000,
     "params": {
       "temperature": 10000,
       "cooling_rate": 0.003
